@@ -12,6 +12,11 @@
   
   
 }
+.leaflet-container
+{
+  height: "80vh";
+  width:"70%";
+}
 #ReadMe>h3,h2{
   padding: 10px;
 
@@ -22,5 +27,8 @@
    
     flex-direction: column;
     
+  }
+  .leaflet-container{
+    width: 100%;
   }
 }

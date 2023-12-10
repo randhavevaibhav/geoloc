@@ -32,6 +32,15 @@ let DefaultIcon = L.icon({
   shadowUrl: iconShadow,
 });
 
+let ScreenWidth = screen.width;
+let mapWidth = 70;
+console.log("screenWidth --> "+ScreenWidth);
+if(ScreenWidth<=600)
+{
+  mapWidth = 100;
+}
+
+
 L.Marker.prototype.options.icon = DefaultIcon;
 
 const baseMaps = {
@@ -169,7 +178,7 @@ const TolMap = () => {
         <MapContainer
           center={[18.6321, 73.8468]}
           zoom={13}
-           style={{ height: "80vh", width:"70%" }}
+           style={{ height: "80vh", width:mapWidth+"%" }}
           whenReady={(map) => setMap(map)}
         >
           <LeafletControlGeocoder />
