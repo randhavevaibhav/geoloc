@@ -37,23 +37,20 @@ function LeafletControlGeocoder() {
   {
 
     L.Control.geocoder({
-        query: "",
-        placeholder: "Search here...",
-        defaultMarkGeocode: false,
-        geocoder
+      defaultMarkGeocode: false
       })
         .on("markgeocode", function (e) {
         
           var latlng = e.geocode.center;
           startPos.push(latlng.lat);
           startPos.push(latlng.lng);
-          console.log("lat log from  markgeocode===> "+latlng.lng);
+         
           if(selectTwoPos.length<2)
           {
             setSelectTwoPos(selectTwoPos => [...selectTwoPos,startPos] );
           }
           
-          console.log("selectTwoPos from  markgeocode===> "+startPos);
+         
           L.marker(latlng, { icon:thisIcon })
             .addTo(map)
             .bindPopup(e.geocode.name+" =====> "+latlng)
