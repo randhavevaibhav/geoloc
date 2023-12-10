@@ -54,14 +54,13 @@ const baseMaps = {
 
 
 const PolygonMap = () => {
-  const [activePolygon, setActivePolygon] = useState(null);
+  
   const [selectedBaseMap, setSelectedBaseMap] = useState("OpenStreetMap");
   const [drawnPolygon, setDrawnPolygon] = useState(null);
   const [posMarkers, setPosMarkers] = useState([]);
   const [selectTwoPos, setSelectTwoPos] = useState([]);
   const [renderRoute, setRenderRoute] = useState(false);
   const latlons = [];
-  const positions =[];
   
   const [map, setMap] = useState(null);
  
@@ -96,7 +95,6 @@ const PolygonMap = () => {
    }
 
    setRenderRoute(!renderRoute);
-   let control;
 
 
    
@@ -163,7 +161,6 @@ const RoutingMachine = createControlComponent(createRoutineMachineLayer);
     }
 
     
-    const coordinatePairs = [];
     let ply1 = '';
     for (let i = 0; i < coordinates.length; i += 2) {
       const lat = coordinates[i];
@@ -224,7 +221,6 @@ const RoutingMachine = createControlComponent(createRoutineMachineLayer);
       .then(response => {
         // Handle the response data here
         
-        const restaurants = response.data.elements.filter(node => node.tags && node.tags.name);
         
         response.data.elements.forEach(restaurant => {
           
@@ -273,7 +269,7 @@ const RoutingMachine = createControlComponent(createRoutineMachineLayer);
    
     {<div >
       {posMarkers.map((data, index) => (
-<Marker position={data[0]}  key={index} eventHandlers={{click:(e)=>{
+<Marker position={data[0]}  key={index} eventHandlers={{click:()=>{
   console.log("length of selectTwoPos after a click ----> "+selectTwoPos.length);
   setSelectTwoPos(selectTwoPos => [...selectTwoPos,data[0]] );
 
