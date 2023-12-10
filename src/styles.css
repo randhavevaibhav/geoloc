@@ -1,4 +1,17 @@
 .App {
   font-family: sans-serif;
   text-align: center;
+  overflow-y: hidden;
+
+}
+
+
+#map-container{
+  display: flex;
+  flex-direction: row;
+  
+}
+#ReadMe>h3,h2{
+  padding: 10px;
+
 }

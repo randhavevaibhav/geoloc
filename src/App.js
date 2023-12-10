@@ -24,7 +24,9 @@ import iconShadow from "leaflet/dist/images/marker-shadow.png";
 
 import { createControlComponent } from "@react-leaflet/core";
 import "leaflet-routing-machine";
-import $ from "jquery";
+import ReadMe from "./ReadMe";
+import "./styles.css";
+
 let DefaultIcon = L.icon({
   iconUrl: icon,
   shadowUrl: iconShadow,
@@ -38,7 +40,7 @@ const baseMaps = {
     "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
 };
 
-const PolygonMap = () => {
+const TolMap = () => {
   const [selectedBaseMap, setSelectedBaseMap] = useState("OpenStreetMap");
   const [drawnPolygon, setDrawnPolygon] = useState(null);
   const [posMarkers, setPosMarkers] = useState([]);
@@ -161,12 +163,13 @@ const PolygonMap = () => {
   };
 
   return (
-    <>
+    
+    <div id="map-container">
       <twoPosContext.Provider value={{ selectTwoPos, setSelectTwoPos }}>
         <MapContainer
           center={[18.6321, 73.8468]}
           zoom={13}
-          style={{ height: "100vh", width: "100%" }}
+          style={{ height: "80vh", width: "70%" }}
           whenReady={(map) => setMap(map)}
         >
           <LeafletControlGeocoder />
@@ -218,6 +221,7 @@ const PolygonMap = () => {
                 circle: false,
                 circlemarker: false,
                 marker: false,
+                polygon:false
               }}
             />
           </FeatureGroup>
@@ -256,8 +260,9 @@ const PolygonMap = () => {
           )}
         </MapContainer>
       </twoPosContext.Provider>
-    </>
+      <ReadMe/>
+  </div>
   );
 };
 
-export default PolygonMap;
+export default TolMap;
