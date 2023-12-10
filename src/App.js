@@ -169,7 +169,7 @@ const TolMap = () => {
         <MapContainer
           center={[18.6321, 73.8468]}
           zoom={13}
-          style={{ height: "80vh", width: "70%" }}
+           style={{ height: "80vh", width:"70%" }}
           whenReady={(map) => setMap(map)}
         >
           <LeafletControlGeocoder />

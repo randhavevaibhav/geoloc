@@ -10,8 +10,17 @@
   display: flex;
   flex-direction: row;
   
+  
 }
 #ReadMe>h3,h2{
   padding: 10px;
 
+}
+
+@media only screen and (max-width: 600px) {
+  #map-container{
+   
+    flex-direction: column;
+    
+  }
 }

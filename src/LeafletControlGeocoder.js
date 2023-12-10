@@ -14,7 +14,7 @@ function LeafletControlGeocoder() {
     const[isThisFuncCalled, setisThisFuncCalled] = useState(true);
     const {selectTwoPos, setSelectTwoPos} = useContext(twoPosContext);
     const map = useMap();
-    console.log("useeffect called!!");
+   
     var geocoder = L.Control.Geocoder.nominatim();
     if (typeof URLSearchParams !== "undefined" && location.search) {
       // parse /?geocoder=nominatim from URL
