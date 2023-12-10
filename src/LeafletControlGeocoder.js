@@ -71,16 +71,19 @@
 
 //   export default LeafletControlGeocoder;
 
-import { useEffect } from "react";
+import { useEffect,useContext} from "react";
 import { useMap } from "react-leaflet";
 import "leaflet-control-geocoder/dist/Control.Geocoder.css";
 import "leaflet-control-geocoder/dist/Control.Geocoder.js";
 import L from "leaflet";
+import { twoPosContext } from "./Contexts/twoPosContext";
 
 import icon from './assets/red-marker-icon.png';
 
 export default function LeafletControlGeocoder() {
   const map = useMap();
+  const startPos=[];
+  const {selectTwoPos, setSelectTwoPos} = useContext(twoPosContext);
 
       var thisIcon = new L.Icon({
       iconUrl: icon,
@@ -110,6 +113,13 @@ export default function LeafletControlGeocoder() {
     })
       .on("markgeocode", function (e) {
         var latlng = e.geocode.center;
+        startPos.push(latlng.lat);
+          startPos.push(latlng.lng);
+         
+          if(selectTwoPos.length<2)
+          {
+            setSelectTwoPos(selectTwoPos => [...selectTwoPos,startPos] );
+          }
         L.marker(latlng, { icon:thisIcon })
           .addTo(map)
           .bindPopup(e.geocode.name)
