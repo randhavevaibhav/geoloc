@@ -24,12 +24,14 @@ import LeafletControlGeocoder from "./LeafletControlGeocoder";
 import { twoPosContext } from "./Contexts/twoPosContext";
 
 
-import { createRoutineMachineLayer } from "./RoutingMachine";
+
 import icon from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
-import RoutingMachine from "./RoutingMachine";
+// import RoutingMachine from "./RoutingMachine";
 
-
+import { createControlComponent } from "@react-leaflet/core";
+import "leaflet-routing-machine";
+import $ from 'jquery';
 let DefaultIcon = L.icon({
   iconUrl: icon,
   shadowUrl: iconShadow
@@ -43,6 +45,12 @@ const baseMaps = {
     "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
   // Add more base maps here...
 };
+
+
+
+
+
+
 
 
 
@@ -96,6 +104,45 @@ const PolygonMap = () => {
 
 
   }
+
+
+  // Routing Machine
+  const createRoutineMachineLayer = (twoPos) => {
+   
+    let startLat=twoPos.NextPos[0][0];
+    let startLong=twoPos.NextPos[0][1];
+    let endtLat=twoPos.NextPos[1][0];
+    let endtLong=twoPos.NextPos[1][1];
+   
+    console.log("startLat ===> "+startLat);
+    console.log("startLong ===> "+startLong);
+    console.log("endtLat ===> "+endtLat);
+    console.log("endtLong ===> "+endtLong);
+
+
+
+   
+
+   
+      const instance = L.Routing.control({
+           waypoints: [
+            L.latLng(startLat, startLong),
+            L.latLng(endtLat,  endtLong)
+         ],
+          addWaypoints: true,
+   
+        });
+
+        
+     
+      return instance;
+};
+
+const RoutingMachine = createControlComponent(createRoutineMachineLayer);
+
+
+
+  // Routing Machine
 
 
 

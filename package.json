@@ -11,6 +11,7 @@
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@babel/plugin-transform-private-property-in-object": "^7.22.11",
     "axios": "^1.5.1",
+    "jquery": "^3.7.1",
     "leaflet": "1.9.3",
     "leaflet-control-geocoder": "^2.4.0",
     "leaflet-draw": "1.0.4",
